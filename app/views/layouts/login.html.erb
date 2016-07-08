@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>BoilerplateSaasRails</title>
+  <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=PT+Sans:400,700'>
+  <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Oleo+Script:400,700'>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+
+</head>
+<body>
+
+  <div class="header">
+      <div class="container">
+        <div class="row">
+            <div class="logo span4">
+                <h1>CloudContacts</h1>
+            </div>
+            <div class="links span8">
+              <%= link_to('Register', new_user_registration_path, class: "btn btn-danger btn-lg") %>
+            </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="register-container container">
+      <div class="row">
+        <div class="iphone span5">
+            <img src="/assets/img/iphone.png" alt="">
+        </div>
+        <div class="register span6">
+          <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+                <h2>Sign in <span class="red"><strong>CloudContacts</strong></span></h2>
+
+                <%= custom_error_messages! %>
+
+                <%= f.label :email %>
+                <%= f.email_field :email, autofocus: true, placeholder: "enter your email..." %>
+
+                <%= f.label :password %>
+                <%= f.password_field :password, class: 'form-control', autocomplete: 'off' %>
+
+                <button type="submit">Sign In</button>
+            <%end%>
+        </div>
+      </div>
+    </div>
+</body>
+</html>
