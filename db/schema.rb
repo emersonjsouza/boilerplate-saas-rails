@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160709143614) do
+ActiveRecord::Schema.define(version: 20160709163400) do
 
   create_table "accounts", force: :cascade do |t|
     t.integer  "owner_id",   limit: 4
@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 20160709143614) do
   add_index "accounts", ["owner_id"], name: "index_accounts_on_owner_id", using: :btree
 
   create_table "contacts", force: :cascade do |t|
-    t.string   "firname",    limit: 255
+    t.string   "firstname",  limit: 255
     t.string   "lastname",   limit: 255
     t.string   "phone",      limit: 255
     t.datetime "created_at",             null: false

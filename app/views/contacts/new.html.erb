@@ -1,0 +1,27 @@
+<div class="container main">
+
+  <div class="row">
+    <div class="panel-default">
+      <h4>#My Contacts</h4>
+      <div class="bs-example" data-example-id="hoverable-table">
+        <div class="register">
+              <%= form_for(@contact) do |f| %>
+
+                    <%= custom_error_messages!(@contact) %>
+
+                    <%= f.label :firstname %>
+                    <%= f.text_field :firstname, autofocus: true, placeholder: "enter your firstname..." %>
+
+                    <%= f.label :lastname %>
+                    <%= f.text_field :lastname, autofocus: true, placeholder: "enter your lastname..." %>
+
+                    <%= f.label :phone %>
+                    <%= f.text_field :phone, autofocus: true, placeholder: "enter your phone..." %>
+
+                    <button type="submit">Create</button>
+                <%end%>
+            </div>
+        </div>
+    </div>
+  </div>
+</div>

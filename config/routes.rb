@@ -1,4 +1,6 @@
 class SubdomaininPresent
+  SUBDOMAINS = %{ admin www painel }
+  
   def self.matches?(request)
     request.subdomain.present? && !SUBDOMAINS.include?(request.subdomain)
   end

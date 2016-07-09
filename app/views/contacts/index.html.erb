@@ -1,7 +1,11 @@
 <div class="container main">
+
   <div class="row">
     <div class="panel-default">
       <h4>#My Contacts</h4>
+      <span class="new-contact">
+        <%= link_to "new contact", new_contact_path, class: "btn btn-primary btn-lg" %>
+      </span>
 
       <div class="bs-example" data-example-id="hoverable-table">
         <table class="table table-hover">
@@ -10,28 +14,25 @@
               <th></th>
               <th>First Name</th>
               <th>Last Name</th>
-              <th>Username</th>
+              <th>Phone</th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
+            <% @contacts.each do |item| %>
             <tr>
               <th scope="row">1</th>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>@mdo</td>
+              <td><%= item.firstname %></td>
+              <td><%= item.lastname %></td>
+              <td><%= item.phone %></td>
+              <td>
+                <%= link_to contact_path(item), method: :delete do %>
+                  <i class="fa fa-trash" aria-hidden="true"></i>
+                <%end%>
+              </td>
             </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Jacob</td>
-              <td>Thornton</td>
-              <td>@fat</td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td>Larry</td>
-              <td>the Bird</td>
-              <td>@twitter</td>
-            </tr>
+            <%end%>
+
           </tbody>
         </table>
       </div>
