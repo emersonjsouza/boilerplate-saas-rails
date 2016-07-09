@@ -12,7 +12,7 @@ end
 
 Rails.application.routes.draw do
 
-  constraints(BoilerplateSaasRails::SubdomaininPresent) do
+  constraints(SubdomaininPresent) do
     root 'contacts#index'
     resources :contacts
 
@@ -24,7 +24,7 @@ Rails.application.routes.draw do
     end
   end
 
-  constraints(BoilerplateSaasRails::SubdomaininBlack) do
+  constraints(SubdomaininBlack) do
     root 'accounts#new', as: :unauthenticated_root
     resources :accounts, only: [:new, :create]
   end
