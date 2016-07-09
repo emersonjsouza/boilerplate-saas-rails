@@ -20,7 +20,7 @@ rake db:migrate
 
 Test this project through on lvh.me:3000
 
-![Home Page](https://github.com/emersonjsouza/boilerplate-saas-rails/public/homepage.png)
+![Home Page](https://raw.githubusercontent.com/emersonjsouza/boilerplate-saas-rails/master/public/homepage.png)
 
 ## Contribuições
 
