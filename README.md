@@ -22,14 +22,11 @@ Test this project through on lvh.me:3000
 
 ## Contribuições
 
-found and fix some bug or have some suggestion your mind?
-
-* do a fork
-* Add your feature ou make a fix (`git checkout -b my-new-feature`)
-* Commit your changes (`git commit -am 'Added some feature'`)
-* Execute push to your branch (`git push origin my-new-feature`)
-* Submit a pull request
-
+1. Fork it ( https://github.com/emersonjsouza/boilerplate-saas-rails/fork )
+2. Create your feature branch (`git checkout -b my-new-feature`)
+3. Commit your changes (`git commit -am 'Add some feature'`)
+4. Push to the branch (`git push origin my-new-feature`)
+5. Create a new Pull Request
 
 ## TODO
 
