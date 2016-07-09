@@ -14,7 +14,7 @@
       <div class="container">
         <div class="row">
             <div class="logo span4">
-                <h1>CloudContacts</h1>
+                <h1><%= link_to "CloudContacts", root_path %></h1>
             </div>
             <div class="links span8">
               <%= link_to('Login', new_user_session_path, class: "btn btn-danger btn-lg") %>
@@ -45,6 +45,12 @@
 
                 <%= f.label :password_confirmation %>
                 <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "type a password again..." %>
+
+                <%= f.label :email %>
+                <div class="input-group">
+                  <%= f.text_field :email, class: 'form-control' %>
+                  <span class="input-group-addon">.cloudcontacts.dev</span>
+                </div>
 
                 <button type="submit">REGISTER</button>
             <%end%>

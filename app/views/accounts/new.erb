@@ -1,0 +1,35 @@
+<div class="register-container container">
+  <div class="row">
+    <div class="iphone span5">
+        <img src="/assets/img/iphone.png" alt="">
+    </div>
+    <div class="register span6">
+      <%= form_for @account do |f| %>
+            <h2>Sign up for <span class="red"><strong>CloudContacts</strong></span></h2>
+            <%= custom_error_messages!(@account) %>
+
+            <%= f.fields_for :owner do |o| %>
+              <%= o.label :name %>
+              <%= o.text_field :name, autofocus: true, placeholder: "choose a username..." %>
+
+              <%= o.label :email %>
+              <%= o.email_field :email, autofocus: true, placeholder: "enter your email..." %>
+
+              <%= o.label :password %>
+              <%= o.password_field :password, autocomplete: "off", placeholder: "choose a password..." %>
+
+              <%= o.label :password_confirmation %>
+              <%= o.password_field :password_confirmation, autocomplete: "off", placeholder: "type a password again..." %>
+            <%end%>
+
+            <%= f.label :subdomain %>
+            <div class="input-group">
+              <%= f.text_field :subdomain, class: 'form-control' %>
+              <span class="input-group-addon">.cloudcontacts.dev</span>
+            </div>
+
+            <button type="submit">REGISTER</button>
+        <%end%>
+    </div>
+  </div>
+</div>

@@ -1,38 +1,31 @@
-module BoilerplateSaasRails
-
-  SUBDOMAINS = %W{ www admin painel }
-
-  class SubdomaininPresent
-    def self.matches?(request)
-      request.subdomain.present? && !SUBDOMAINS.include?(request.subdomain)
-    end
+class SubdomaininPresent
+  def self.matches?(request)
+    request.subdomain.present? && !SUBDOMAINS.include?(request.subdomain)
   end
+end
 
-  class SubdomaininBlack
-    def self.matches?(request)
-      request.subdomain.blank? || SUBDOMAINS.include?(request.subdomain)
-    end
+class SubdomaininBlack
+  def self.matches?(request)
+    request.subdomain.blank? || SUBDOMAINS.include?(request.subdomain)
   end
 end
 
 Rails.application.routes.draw do
-  devise_for :users
 
-  devise_scope :user do
-    # constraints(BoilerplateSaasRails::SubdomaininPresent) do
-    #   unauthenticated do
-    #     root 'devise/sessions#new', as: :unauthenticated__login_root
-    #   end
-    # end
+  constraints(BoilerplateSaasRails::SubdomaininPresent) do
+    root 'contacts#index'
+    resources :contacts
 
-    #constraints(BoilerplateSaasRails::SubdomaininBlack) do
-      unauthenticated do
-        root 'devise/registrations#new', as: :unauthenticated_root
+    devise_for :users
+    devise_scope :user do
+        unauthenticated do
+          root 'devise/sessions#new', as: :unauthenticated__login_root
       end
-    #end
+    end
   end
 
-
-  root "contacts#index"
-
+  constraints(BoilerplateSaasRails::SubdomaininBlack) do
+    root 'accounts#new', as: :unauthenticated_root
+    resources :accounts, only: [:new, :create]
+  end
 end

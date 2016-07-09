@@ -226,3 +226,8 @@ a:hover { text-decoration: none; }
 }
 
 .panel-default { margin: 25px;}
+
+.input-group {
+  .form-control { width: 70%; float: left;}
+  .input-group-addon { float: left; position: relative; top:20px;}
+}

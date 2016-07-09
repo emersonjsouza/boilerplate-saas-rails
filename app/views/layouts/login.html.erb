@@ -15,10 +15,12 @@
       <div class="container">
         <div class="row">
             <div class="logo span4">
-                <h1>CloudContacts</h1>
+                <h1><%= link_to "CloudContacts", root_path %></h1>
             </div>
             <div class="links span8">
+              <% if subdomain_in_black %>
               <%= link_to('Register', new_user_registration_path, class: "btn btn-danger btn-lg") %>
+              <%end%>
             </div>
         </div>
       </div>
@@ -33,7 +35,7 @@
           <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
                 <h2>Sign in <span class="red"><strong>CloudContacts</strong></span></h2>
 
-                <%= custom_error_messages! %>
+                <%= custom_error_messages!(resource) %>
 
                 <%= f.label :email %>
                 <%= f.email_field :email, autofocus: true, placeholder: "enter your email..." %>

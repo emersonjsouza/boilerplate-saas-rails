@@ -1,15 +1,11 @@
 class User < ActiveRecord::Base
-  after_create :create_tenent
+  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
 
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
-  validates :username,  presence: true
-
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+  validates :name,  presence: true
+  # before_create :default_date
 
   private
-  def create_tenent
-     Apartment::Tenant.create(username)
-   end
+  # def default_date
+  #   @created_at = Date.today
+  # end
 end

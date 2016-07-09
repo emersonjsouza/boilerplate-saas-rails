@@ -25,7 +25,6 @@ module BoilerplateSaasRails
 
     config.to_prepare do
         Devise::SessionsController.layout 'login'
-        Devise::RegistrationsController.layout 'register'
     end
 
   end
