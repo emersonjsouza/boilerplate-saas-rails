@@ -1,28 +1,30 @@
 class ApplicationController < ActionController::Base
-
-  #before_filter :load_schema, :authenticate_user!
-  before_action :configure_permitted_parameters, if: :devise_controller?
-  helper_method :subdomain_in_black
-
-  # Prevent CSRF attacks by raising an exception.
-  # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
+
+  before_filter :load_schema, :authenticate_user!
+  before_action :configure_permitted_parameters, if: :devise_controller?
 
   protected
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
   end
 
-  def subdomain_in_black
-    request.subdomain.blank? || BoilerplateSaasRails::SUBDOMAINS.include?(request.subdomain)
-  end
-
   def load_schema
-    #Apartment::Database.switch('public')
-    #return unless request.subdomain.present?
+    config  = Rails.application.config_for :database
 
-    # if user_signed_in?
-    #   Apartment::Database.switch(current_user.username)
-    # end
+    Apartment::Database.switch(config[:database])
+    return unless request.subdomain.present?
+
+    if current_account
+      Apartment::Database.switch(current_account.subdomain)
+    else
+      redirect_to root_url(subdomain: false)
+    end
   end
+
+  def current_account
+    @current_account ||= Account.find_by(subdomain: request.subdomain)
+  end
+
+  helper_method :current_account
 end

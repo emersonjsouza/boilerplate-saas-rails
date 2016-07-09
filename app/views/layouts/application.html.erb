@@ -16,13 +16,15 @@
               <h1><%= link_to "CloudContacts", root_path %></h1>
           </div>
           <div class="links span8">
-            <%= link_to('Sign out', destroy_user_session_path, :method => :delete, class: "btn btn-danger btn-lg") %>
+            <% if current_account %>
+              <%= link_to('Sign out', destroy_user_session_path, :method => :delete, class: "btn btn-danger btn-lg") %>
+            <%end%>
           </div>
       </div>
     </div>
   </div>
 
   <%= yield %>
-  
+
 </body>
 </html>
