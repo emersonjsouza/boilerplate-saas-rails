@@ -36,4 +36,4 @@ Test this project through on lvh.me:3000
 
 ## License
 
-The gem is available as open source under the terms of the [MITLicense](http://opensource.org/licenses/MIT).
+[MITLicense](http://opensource.org/licenses/MIT).
