@@ -20,6 +20,8 @@ rake db:migrate
 
 Test this project through on lvh.me:3000
 
+![Home Page](https://github.com/emersonjsouza/boilerplate-saas-rails/tree/master/public/homepage.png)
+
 ## Contribuições
 
 1. Fork it ( https://github.com/emersonjsouza/boilerplate-saas-rails/fork )
