@@ -11,16 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160709163400) do
+ActiveRecord::Schema.define(version: 20160711121112) do
 
   create_table "accounts", force: :cascade do |t|
-    t.integer  "owner_id",   limit: 4
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
     t.string   "subdomain",  limit: 255
+    t.integer  "owner_id",   limit: 4,   null: false
   end
-
-  add_index "accounts", ["owner_id"], name: "index_accounts_on_owner_id", using: :btree
 
   create_table "contacts", force: :cascade do |t|
     t.string   "firstname",  limit: 255
@@ -49,5 +47,4 @@ ActiveRecord::Schema.define(version: 20160709163400) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
-  add_foreign_key "accounts", "users", column: "owner_id"
 end

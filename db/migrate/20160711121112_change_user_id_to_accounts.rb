@@ -1,5 +1,5 @@
 class ChangeUserIdToAccounts < ActiveRecord::Migration
   def change
-    rename_column :accounts, :user_id, :owner_id
+    add_column :accounts, :owner_id, :integer, :null => false
   end
 end
